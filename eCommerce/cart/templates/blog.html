@@ -1,0 +1,96 @@
+{% extends './basic.html' %}
+{% load static %}
+
+{% block title %} | Blog {% endblock %}
+{% block head %}
+
+
+{% endblock %}
+
+  {% block body %}
+			<!-- Slider / Hero
+		============================================= -->
+		<div id="slider" class="slider-element dark py-0" style="background-size: cover; background-image: url({% static 'demos/shop/images/blog.jpg' %}); background-position: center center; background-repeat: no-repeat;">
+
+			<div class="container">
+				<div class="row text-center py-5 min-vh-md-75 justify-content-center align-items-center">
+					<div class="col-lg-6">
+						<h5 class="mb-1 text-uppercase ls3 text-white-50 font-body">Latest News</h5>
+						<h2 class="display-3 font-weight-bolder ls3 font-display">Naveen's Blog</h2>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Content
+		============================================= -->
+		<section id="content">
+			<div class="content-wrap pb-0">
+
+				<div class="container clearfix">
+
+					<!-- Posts
+					============================================= -->
+					<div id="posts" class="post-grid row grid-container gutter-30 overflow-visible" data-layout="fitRows">
+						{% for i in blog %}
+						<div class="entry col-md-4 col-sm-6 col-12">
+							<div class="grid-inner h-translate-y-sm all-ts">
+								<div class="entry-image" data-animate="fadeIn">
+									<a href="/blog/post/{{i.slug}}" ><img src="{{ i.image1.url }}" alt="{{i.title}}"></a>
+								</div>
+								<div class="entry-title title-sm">
+									<h3 class="nott mb-4 ls0"><a class="color" href="/blog/post/{{i.slug}}">{{ i.title }}</a></h3>
+								</div>
+								<div class="entry-meta">
+									<ul>
+										<li><i class="icon-calendar3"></i> {{i.date}}</li>
+
+									</ul>
+								</div>
+								<div class="entry-content mt-4">
+									<p>{{ i.body1|slice:180 }} ...</p>
+								</div>
+							</div>
+						</div>
+						{% endfor %}
+
+
+
+					</div><!-- #posts end -->
+
+					<!-- Pagination
+					============================================= -->
+
+
+
+
+
+
+
+
+					<ul class="pagination mt-5 pagination-circle justify-content-center">
+						 {% if blog.has_previous %}
+						<li class="page-item"><a class="page-link" href="/blog/?page={{blog.previous_page_number}}"><i class="icon-angle-left"></i></a></li>
+						{% endif %}
+						 {% for p in blog.paginator.page_range %}
+							{% if blog.number == p %}
+							<li class="page-item active"><a class="page-link" href="/blog/?page={{p}}">{{p}}</a></li>
+							{% else %}
+							<li class="page-item"><a class="page-link" href="/blog/?page={{p}}">{{p}}</a></li>
+							{% endif %}
+						{% endfor %}
+						{% if blog.has_next %}
+						<li class="page-item"><a class="page-link" href="/blog/?page={{blog.next_page_number}}"><i class="icon-angle-right"></i></a></li>
+						{% endif %}
+					</ul>
+
+				</div>
+
+				<!-- Download App Section
+				============================================= -->
+
+
+			</div>
+		</section><!-- #content end -->
+
+{% endblock %}

@@ -1,0 +1,204 @@
+{% extends './basic.html' %}
+{% load static %}
+
+{% block title %} | Blog-{{post.title}} {% endblock %}
+{% block head %}
+
+
+{% endblock %}
+
+  {% block body %}
+
+		<!-- Content
+		============================================= -->
+
+	<section id="content">
+
+			<div class="content-wrap pt-5" style="overflow: visible;">
+
+				<div class="container">
+					<!-- Single Page Content
+					============================================= -->
+					<div class="single-post mb-0">
+
+						<!-- Single Post
+						============================================= -->
+						<div class="entry">
+
+							<div class="row justify-content-center">
+								<div class="col-lg-6">
+									<!-- Entry Title
+									============================================= -->
+									<div class="entry-title">
+
+										<h2>{{post.title}}</h2>
+									</div><!-- .entry-title end -->
+								</div>
+							</div>
+
+							<!-- Entry Meta
+							============================================= -->
+							<div class="d-flex justify-content-center mt-2">
+								<div class="entry-meta">
+									<ul>
+										<li>{{post.date}}</li>
+										<li>By <a href="#">Admin</a></li>
+									</ul>
+								</div>
+							</div><!-- .entry-meta end -->
+
+							<!-- Entry Image
+							============================================= -->
+							<div class="entry-image mt-5">
+								<a href="demos/blog/images/single/hero-full.jpg" data-lightbox="image"><img class="rounded" src="{{post.fechar_image.url}}" alt="Blog Single"></a>
+							</div><!-- .entry-image end -->
+
+							<!-- Entry Content
+							============================================= -->
+							<div class="entry-content">
+
+								<div class="row">
+
+									<div class="col-lg-2 media-content" data-animate="fadeIn">
+
+									</div>
+
+									<div class="col-lg-1"></div>
+
+									<div class="text-content col-lg-6">
+
+										<h3>{{post.head1}}</h3>
+
+
+										<div class="row mb-4" data-lightbox="gallery">
+											<div class="col-md-12">
+												<a href="demos/blog/images/single/1-full.jpg" data-lightbox="gallery-item"><img class="rounded" src="{{post.image1.url}}" alt="Alt Images"></a>
+											</div>
+
+										</div>
+										<p>{{post.body1}}</p>
+
+										{% if post.head2 %}
+											<h3>{{post.head2}}</h3>
+											<div class="row mb-4" data-lightbox="gallery">
+												<div class="col-md-12">
+													<a href="demos/blog/images/single/1-full.jpg" data-lightbox="gallery-item"><img class="rounded" src="{{post.image2.url}}" alt="Alt Images"></a>
+												</div>
+
+											</div>
+											<p>{{post.body2}}</p>
+										{% endif %}
+										{% if post.head3 %}
+											<h3>{{post.head3}}</h3>
+											<div class="row mb-4" data-lightbox="gallery">
+												<div class="col-md-12">
+													<a href="demos/blog/images/single/1-full.jpg" data-lightbox="gallery-item"><img class="rounded" src="{{post.image3.url}}" alt="Alt Images"></a>
+												</div>
+
+											</div>
+											<p>{{post.body3}}</p>
+										{% endif %}
+										{% if post.head4 %}
+											<h3>{{post.head4}}</h3>
+											<div class="row mb-4" data-lightbox="gallery">
+												<div class="col-md-12">
+													<a href="demos/blog/images/single/1-full.jpg" data-lightbox="gallery-item"><img class="rounded" src="{{post.image4.url}}" alt="Alt Images"></a>
+												</div>
+
+											</div>
+											<p>{{post.body4}}</p>
+										{% endif %}
+										{% if post.head5 %}
+											<h3>{{post.head5}}</h3>
+											<div class="row mb-4" data-lightbox="gallery">
+												<div class="col-md-12">
+													<a href="demos/blog/images/single/1-full.jpg" data-lightbox="gallery-item"><img class="rounded" src="{{post.image5.url}}" alt="Alt Images"></a>
+												</div>
+
+											</div>
+											<p>{{post.body5}}</p>
+										{% endif %}
+										{% if post.head6 %}
+											<h3>{{post.head6}}</h3>
+											<div class="row mb-4" data-lightbox="gallery">
+												<div class="col-md-12">
+													<a href="demos/blog/images/single/1-full.jpg" data-lightbox="gallery-item"><img class="rounded" src="{{post.image6.url}}" alt="Alt Images"></a>
+												</div>
+											</div>
+											<p>{{post.body6}}</p>
+										{% endif %}
+										{% if post.head7 %}
+											<h3>{{post.head7}}</h3>
+											<div class="row mb-4" data-lightbox="gallery">
+												<div class="col-md-12">
+													<a href="demos/blog/images/single/1-full.jpg" data-lightbox="gallery-item"><img class="rounded" src="{{post.image7.url}}" alt="Alt Images"></a>
+												</div>
+
+											</div>
+											<p>{{post.body7}}</p>
+										{% endif %}
+										{% if post.head8 %}
+											<h3>{{post.head8}}</h3>
+											<div class="row mb-4" data-lightbox="gallery">
+												<div class="col-md-12">
+													<a href="demos/blog/images/single/1-full.jpg" data-lightbox="gallery-item"><img class="rounded" src="{{post.image8.url}}" alt="Alt Images"></a>
+												</div>
+
+											</div>
+											<p>{{post.body8}}</p>
+										{% endif %}
+										{% if post.head9 %}
+											<h3>{{post.head9}}</h3>
+											<div class="row mb-4" data-lightbox="gallery">
+												<div class="col-md-12">
+													<a href="demos/blog/images/single/1-full.jpg" data-lightbox="gallery-item"><img class="rounded" src="{{post.image9.url}}" alt="Alt Images"></a>
+												</div>
+
+											</div>
+											<p>{{post.body9}}</p>
+										{% endif %}
+										{% if post.head10 %}
+											<h3>{{post.head10}}</h3>
+											<div class="row mb-4" data-lightbox="gallery">
+												<div class="col-md-12">
+													<a href="demos/blog/images/single/1-full.jpg" data-lightbox="gallery-item"><img class="rounded" src="{{post.image10.url}}" alt="Alt Images"></a>
+												</div>
+											</div>
+											<p>{{post.body10}}</p>
+										{% endif %}
+										<div class="line"></div>
+									</div>
+									<!-- Post Single - Content End -->
+								</div>
+
+							</div>
+						</div><!-- .entry end -->
+
+
+
+					</div>
+					<!-- Single Page Content -->
+				</div>
+
+			</div>
+
+		</section>
+	<!-- #content end -->
+
+{% endblock %}
+{% block js %}
+<script>
+		// Current Date
+		var weekday = ["Sun","Mon","Tues","Wed","Thurs","Fri","Sat"],
+			month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+			a = new Date();
+
+			jQuery('.date-today span').html( weekday[a.getDay()] + ', ' + month[a.getMonth()] + ' ' + a.getDate() );
+
+		jQuery('.dark-mode').on( 'click', function() {
+		    jQuery("body").toggleClass('dark');
+		    SEMICOLON.header.logo();
+		    return false;
+		});
+	</script>
+{% endblock %}

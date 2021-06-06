@@ -1,0 +1,283 @@
+{% extends './basic.html' %}
+{% load static %}
+{% load cart %}
+{% load custom_filter %}
+{% block title %}| Product Detail{% endblock %}
+{% block style %}
+
+		<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+	</style>
+
+
+{% endblock %}
+
+  {% block body %}
+
+	<!-- Content
+		============================================= -->
+
+	<section id="content">
+			<div class="content-wrap">
+				<div class="container clearfix">
+
+					<div class="single-product">
+						<div class="product" >
+							<div class="row gutter-40">
+
+								<div class="col-md-6">
+
+									<div class="product-image"  id="gray">
+											<div class="fslider" data-pagi="false" data-arrows="false" data-thumbs="true">
+											<div class="flexslider">
+												<div class="slider-wrap " id="prodimg" data-lightbox="gallery">
+
+													<div class="slide" data-thumb="{{product.image1.url}}"><a href="{{product.image1.url}}" data-lightbox="gallery-item"><img class="drift-demo-trigger" data-zoom="{{product.image1.url}}"  src="{{product.image1.url}}" alt="{{product.name}}"></a></div>
+													{% if product.image2 %}
+													<div class="slide" data-thumb="{{product.image2.url}}"><a href="{{product.image2.url}}"  data-lightbox="gallery-item"><img class="drift-demo-trigger" data-zoom="{{product.image2.url}}" src="{{product.image2.url}}" alt="Pink Printed Dress"></a></div>
+														{% endif %}
+													{% if product.image3 %}
+													<div class="slide" data-thumb="{{product.image3.url}}"><a href="{{product.image3.url}}"  data-lightbox="gallery-item"><img class="drift-demo-trigger" data-zoom="{{product.image3.url}}"  src="{{product.image3.url}}" alt="Pink Printed Dress"></a></div>
+													{% endif %}
+													{% if product.image4 %}
+													<div class="slide" data-thumb="{{product.image4.url}}"><a href="{{product.image4.url}}"  data-lightbox="gallery-item"><img class="drift-demo-trigger" data-zoom="{{product.image4.url}}"  src="{{product.image4.url}}" alt="Pink Printed Dress"></a></div>
+													{% endif %}
+												</div>
+											</div>
+										</div>
+										{% if product.lable %}
+										<div class="sale-flash badge badge-danger p-2" >{{product.lable}}</div>
+										{% endif %}
+										{% if product.stock < 1 %}
+										<div class="sale-flash1 badge badge-danger p-2" id="sold" value="Out">Out of Stock</div>
+										{% endif %}
+									</div>
+									<!-- Product Single - Gallery End -->
+
+								</div>
+
+								<div class="col-md-6 product-desc detail">
+
+									<div class="d-flex align-items-center justify-content-between">
+
+										<div class="product-price"><h3>{{product.name}}</h3></div>
+											{% if product.price == 0 %}
+										<div class="product-price"> <ins>{{product.discount_price|currency}}</ins></div>
+										{% else %}
+										<div class="product-price"><del>{{product.price|currency}}</del> <ins>{{product.discount_price|currency}}</ins></div>
+										{% endif %}
+										<!-- Product Single - Price End -->
+
+									</div>
+
+
+										<div class="product-rating">Rating :
+											{% if product.rating == 3  %}
+											<i class="icon-star3"></i>
+											<i class="icon-star3"></i>
+											<i class="icon-star3"></i>
+											<i class="icon-star-empty"></i>
+											<i class="icon-star-empty"></i>
+											{% elif product.rating == 4  %}
+											<i class="icon-star3"></i>
+											<i class="icon-star3"></i>
+											<i class="icon-star3"></i>
+											<i class="icon-star3"></i>
+											<i class="icon-star-empty"></i>
+											{% elif product.rating == 5  %}
+											<i class="icon-star3"></i>
+											<i class="icon-star3"></i>
+											<i class="icon-star3"></i>
+											<i class="icon-star3"></i>
+											<i class="icon-star3"></i>
+											{% else %}
+											{% endif %}
+
+										</div>
+										<!-- Product - Price
+										============================================= -->
+
+
+									<div class="line"></div>
+
+									<!-- Product Single - Quantity & Cart Button
+									============================================= -->
+									<form class="cart mb-0 d-flex justify-content-between align-items-center" id="cartform" onsubmit="return validateForm()"   name="cart" action="/cart/" method="post" enctype='multipart/form-data'>
+									{% csrf_token %}
+											{% if 'customer_id' in request.session %}
+												{% if product.stock < 1 %}
+													<div class="quantity clearfix"></div>
+
+													<button type="button" style="background:gray" class="button m-0">Sold</button>
+
+												{% elif flag %}
+													<div class="quantity clearfix"></div>
+
+													<a href="\cart\" style="background:gray" class="add-to-cart button m-0">Go to Cart</a>
+												{% else %}
+													<div class="quantity clearfix">
+														<input type="button" value="-" onclick="minus()">
+														<input type="number" step="1" min="1" name="quantity" id="qty" value="1" title="Qty" class="qty" />
+														<input type="button" value="+" onclick= "plus()">
+														<input type="hidden" value="{{product.id}}" name="product_id">
+														<input type="hidden" class="prod_color" value="{{product.color}}" name="product_color">
+														<input type="hidden"  value="{{product.stock}}" id="p_stock">
+													</div>
+													<button type="submit" class="add-to-cart button m-0 ">Add To Cart</button>
+												{% endif  %}
+											{% else %}
+												<div class="quantity clearfix"></div>
+
+													<a href="/login?return_url=/product_detail/{{product.id}}"><button type="button" style="background:gray" class="button m-0">Login</button></a>
+											{% endif %}
+										</form>
+
+									<!-- Product Single - Quantity & Cart Button End -->
+
+									<div class="line"></div>
+
+									<div class="row align-items-center">
+
+
+											<div id="product-color-dots" class="owl-dots">
+												<p>Available Color :</p>
+													<table >
+														<tr class="cart_item">
+															{% for i in related_prod %}
+															<td class="cart-product-thumbnail">
+																<a href="/product_detail/{{i.id}}"><img width="64" height="64" src="{{ i.image1.url }}" alt="Pink Printed Dress"></a>
+															</td>
+															{% endfor %}
+
+														</tr>
+													</table>
+											</div>
+									</div>
+
+
+
+
+									<div class="line"></div>
+
+									<!-- Product Single - Short Description
+									============================================= -->
+									<p>{{product.description}}</p>
+									<ul class="iconlist">
+										<li><i class="icon-caret-right"></i> Dynamic Color Options</li>
+
+
+									</ul><!-- Product Single - Short Description End -->
+
+								</div>
+
+							</div>
+						</div>
+					</div>
+
+
+
+				</div>
+			</div>
+
+
+		</section>
+
+<!-- #content end -->
+
+
+{% endblock %}
+
+{% block js %}
+<script>
+		var stock = parseInt($("#p_stock").val());
+		var quantity = parseInt($("#qty").val());
+		function plus(){
+			if (quantity < stock) {
+				quantity = quantity + 1;
+				$("#qty").val(quantity)
+				}
+
+		};
+		function minus(){
+			if (quantity > 1) {
+				quantity = quantity - 1 ;
+				$("#qty").val(quantity)
+				}
+		};
+
+
+
+</script>
+<script>
+var thumbs = document.querySelectorAll('.drift-demo-trigger');
+var para = document.querySelector('p');
+
+for (var i = 0, len = thumbs.length; i < len; i++) {
+  var thumb = thumbs[i];
+
+  new Drift(thumb, {
+    paneContainer: document.querySelector('.detail'),
+  });
+}
+
+// Using jQuery to demo AJAX loading
+var moreThumbsContainer = $('.detail');
+
+moreThumbsContainer.load('product-view.html', function() {
+  moreThumbsContainer.find('.detail').each(function(i, el) {
+    new Drift(el, {
+      paneContainer: detail
+    });
+  });
+});
+let outsale  = document.getElementById('sold').getAttribute('value')
+   
+	if ( outsale = 'Out'){
+			document.getElementById('gray').className+=' black';
+			}
+
+
+</script>
+
+
+{% endblock %}

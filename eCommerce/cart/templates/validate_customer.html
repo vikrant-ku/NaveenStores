@@ -1,0 +1,61 @@
+{% extends './basic.html' %}
+{% load static %}
+
+{% block title %}| Validate User{% endblock %}
+
+  {% block body %}
+
+
+
+		<!-- Content
+        ============================================= -->
+        <section id="content">
+            <div class="content-wrap py-0">
+
+                <div class="vertical-middle">
+                        <div class="container-fluid py-5 mx-auto">
+
+
+
+
+                            <div class="card mx-auto rounded-0 border-0" style="max-width: 400px; background-color: rgba(255,255,255,0.93);">
+                                <div class="card-body" style="padding: 40px;">
+                                <form id="login-form" name="login-form" class="mb-0 row" action="/signup/validate/" method="post"> {% csrf_token %}
+
+                                        <h3>Validate Your Email</h3>
+
+                                        <div class="row">
+                                             {% for key, value in customer.items %}
+                                                 <input type="hidden" name="{{key}}" value="{{value}}"><br>
+                                             {% endfor %}
+
+
+                                            <div class="col-12 form-group">
+                                                <label for="form-repassword">Enter Your OTP :</label>
+                                                <input type="text" id="form-repassword" name="user_otp" value="" class="form-control not-dark" required />
+                                            </div>
+
+
+                                            <div class="col-12 form-group">
+                                            <button type="submit">submit</button>
+
+                                            </div>
+                                        </div>
+                                    </form>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+            </div>
+        </section>
+
+<!-- #content end -->
+
+
+
+
+		{% endblock %}
+

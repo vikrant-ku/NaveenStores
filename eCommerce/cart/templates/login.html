@@ -1,0 +1,72 @@
+{% extends './basic.html' %}
+{% load static %}
+
+{% block title %}| Login{% endblock %}
+{% block style %}
+<style type="text/css">
+    .glyphicon {
+    margin-left: -30px;
+    cursor: pointer;
+}
+</style>
+{% endblock %}
+
+  {% block body %}
+
+		<!-- Content
+		============================================= -->
+  <section id="content">
+        <div class="content-wrap py-0">
+           <div class="vertical-middle">
+                    <div class="container-fluid py-5 mx-auto">
+                        <div class="center">
+                        </div>
+
+                        <div class="card mx-auto rounded-0 border-0" style="max-width: 300px; background-color: rgba(255,255,255,0.93);">
+                            <div class="card-body" style="padding: 40px;">
+                                <form id="login-form" name="login-form" class="mb-0" action="/login/" method="post"> {% csrf_token %}
+                                    <h3>Welcome Back</h3>
+
+                                    <div class="row">
+
+                                        <div class="col-12 form-group">
+                                            <label for="login-form-username">Email:
+                                            <input type="text" id="login-form-username" name="login-email"  value="" class="form-control not-dark" /></label>
+                                        </div>
+
+
+                                       <!--  <div class="col-12 form-group">
+                                            <label for="login-form-password">Password:</label>
+                                            <input type="password" id="login-form-password" name="login-password" value="" class="form-control not-dark" />
+                                        </div> -->
+                                         <div class="col-12 form-group">
+                                                      <label > Password: <input type="password" value="" id="myInput" name="login-password" onChange="onChange()" class="form-control"  required></label>
+
+                                                       <span class="glyphicon" onclick="myFunction('myInput')"><i class="icon-line-eye"></i></span>
+                                                </div>
+
+                                        <div class="col-12 form-group">
+                                        <button type="submit">submit</button>
+                                            <a href="/signup/" style="color: #000000" class="float-right">not registered yet?login/signup</a>
+                                            <a href="/login/forget_password/" style="color: #000000" class="float-right">Forgot Password?</a>
+
+                                        </div>
+                                    </div>
+                                </form>
+
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+        </div>
+    </section><!-- #content end -->
+<!-- #content end -->
+
+
+
+
+		{% endblock %}
+

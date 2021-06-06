@@ -1,0 +1,48 @@
+{% extends './basic.html' %}
+{% load static %}
+{% load cart %}
+{% load custom_filter %}
+
+{% block title %} | Payment Done {% endblock %}
+{% block head %}
+
+
+{% endblock %}
+
+  {% block body %}
+
+		<!-- Content
+		============================================= -->
+    <div id="wrapper" class="clearfix">
+        <section id="slider" class="slider-element min-vh-40 dark error404-wrap include-header"   style="background: center; margin-bottom: 25px ">
+        <div class="slider-inner">
+
+            <div class="vertical-middle">
+                <div class="container text-center py-5 py-md-0">
+
+         
+                                                <div class="succ"><i class="icon-line-check-circle"></i></div>
+                      <div class="heading-block border-bottom-0">
+                      <h4>Your Payment Successfull.</h4>
+                      <span>Thank you for shopping</span>
+                        <div class="col-sm-12"  >
+                            <a href="/"><input type="button" value="Go Home"></a>
+                        </div>
+                      </div>
+               </div>
+           </div>
+
+            </div>
+        </section>
+    </div>
+
+
+        <!-- #content end -->
+
+
+  {% endblock %}
+{% block js %}
+
+
+  {% endblock %}
+

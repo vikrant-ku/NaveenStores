@@ -1,0 +1,65 @@
+{% extends './basic.html' %}
+{% load static %}
+{% load cart %}
+{% load custom_filter %}
+
+{% block title %} | Payment Cancel {% endblock %}
+{% block head %}
+  <script>
+  </script>
+
+{% endblock %}
+
+  {% block body %}
+  
+
+		<!-- Content
+		============================================= -->
+<section id="slider" class="slider-element min-vh-60 dark error404-wrap include-header" >
+
+            <div class="vertical-middle">
+                <div class=" text-center ">
+                    <div class="failed"><i class="icon-line-cross"></i></div>
+                    <div class="heading-block border-bottom-0">
+                    <h4>Your payment failed</h4>
+                        <span style="color:black">Please try again</span>
+                    </div>
+
+                    <div class="col-sm-12">  <a href="/cart/"> <input type="submit" value="Try Again"></a> </div>
+
+
+                </div>
+
+            </div>
+    </section>
+        <!-- #content end -->
+
+
+  {% endblock %}
+{% block js %}
+ <script type="text/javascript">
+        $(document).ready(function($) {
+
+        if (window.history && window.history.pushState) {
+            $(window).on('popstate', function() {
+            var hashLocation = location.hash;
+            var hashSplit = hashLocation.split("#!/");
+            var hashName = hashSplit[1];
+            if (hashName !== '') {
+                var hash = window.location.hash;
+               if (hash === '') {
+                alert('Back button was pressed.');
+                    window.location='/';
+                    return false;
+                }
+            }
+            });
+            window.history.pushState('forward', null, './');
+        }
+
+        });
+
+</script>  
+  
+
+  {% endblock %}

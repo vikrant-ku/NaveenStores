@@ -1,0 +1,226 @@
+{% extends './basic.html' %}
+{% load static %}
+{% load cart %}
+{% load custom_filter %}
+
+{% block title %}| Cancellation{% endblock %}
+{% block style %}
+
+
+{% endblock %}
+
+  {% block body %}
+
+<section id="content">
+
+            <div class="content-wrap bg-light">
+
+                <div class="container">
+
+                    <div class="row justify-content-center">
+                        <div class="col-lg-7 col-md-10">
+                            <div class="card my-5 shadow-sm">
+                                <div class="card-body p-5">
+
+                                    <h4 class="ls4 center">Order Cancellation Form</h4>
+
+                                    <div class="divider divider-sm divider-center text-dark"><i class="icon-heart21"></i></div>
+
+                                    <div class="" data-alert-type="false">
+
+                                        <div class="form-result"></div>
+
+                                        <div class="form-process">
+                                            <div class="css3-spinner">
+                                                <div class="css3-spinner-double-bounce1"></div>
+                                                <div class="css3-spinner-double-bounce2"></div>
+                                            </div>
+                                        </div>
+
+                                        <form class="mb-0" id="template-wedding" name="template-wedding" action="/profile/order/order_cancellation" method="post" enctype="multipart/form-data">
+                                                {% csrf_token %}
+                                            <div class="row">
+
+                                                <div class="col-12 center mb-5">
+                                                     <h4 class="font-secondary font-italic ls3">As per our policies, order cancellation is only accepted within 24 hours of order placement. Once the order is shipped, we donot accept order cancellation.</h4>
+                                                    <h2 class="font-secondary font-italic h1">Naveen Stores Ludhiana</h2>
+                                                </div>
+
+                                                            <input type="hidden" id="order-id" name="order_id" value="{{order.order_id}}" class="form-control required" placeholder="Enter Your order number" />
+
+
+
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="row">
+                                                        <div class="col-md-12 bottommargin-sm">
+                                                            <label for="template-wedding-first-name">Full Name<small class="text-danger">*</small></label>
+                                                            <input type="text" id="template-wedding-first-name" name="name" value="{{order.name}}" class="form-control required" placeholder="Enter your First Name" />
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="row">
+                                                         <div class="col-md-12 bottommargin-sm">
+                                                            <label for="contact-number">Contact Number<small class="text-danger">*</small></label>
+                                                            <input type="text" id="contact-number" name="phone" value="{{order.phone}}"  onkeypress="return isNumberKey(event)" maxlength="10" class="form-control required" placeholder="Enter your contact number" />
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="col-12 bottommargin-sm">
+                                                    <label  class="mb-3">are you sure want to cancel?</label><br>
+                                                    <div class="btn-group btn-group-toggle nav" data-toggle="buttons">
+                                                        <a href="#attending-tab-1" class="btn btn-outline-success flex-fill" data-toggle="tab">
+                                                            <input type="radio" name="template-wedding-attending" id="template-wedding-attending-yes" class="required" value="Yes">Yes
+                                                        </a>
+                                                        <a href="#attending-tab-2" class="btn btn-outline-danger flex-fill" data-toggle="tab">
+                                                            <input type="radio" name="template-wedding-attending" id="template-wedding-attending-no" class="required" value="No">No
+                                                        </a>
+
+                                                    </div>
+
+                                                    <div class="tab-content">
+                                                        <div class="tab-pane bg-light p-4 mt-4" id="attending-tab-1">
+                                                            <div class="row">
+                                                                <div class="col-md-12 bottommargin-sm">
+                                                                    <h4 class="mb-2"><i class="icon-frown-open1 position-relative text-success mr-2" style="top: 1px;"></i>What went wrong?</h4>
+                                                                    <p class="mb-0">Before we proceed with the cancellation process, we need some Information!</p>
+                                                                </div>
+                                                                <div class="col-md-6 bottommargin-sm">
+                                                                    <label for="template-wedding-attending-side">Reason?</label>
+                                                                    <select id="template-wedding-attending-side" name="reason" class="form-control required" required>
+                                                                        <option value="" disabled selected>Select Your Reason</option>
+                                                                        <option value="Wrong Color">Wrong Color</option>
+                                                                        <option value="Placed order by mistake">Placed order by mistake</option>
+                                                                        <option value="Need to add more products">Need to add more products</option>
+                                                                        <option value="Placed at the wrong address">Placed at the wrong address</option>
+                                                                        <option value="Need to remove one or more product from the order">Need to remove one or more product from the order</option>
+
+                                                                    </select>
+                                                                </div>
+
+                                                                <div class="col-12">
+                                                                    <label for="template-wedding-email">Email Address<small class="text-danger">*</small></label>
+                                                                    <input type="email" name="email" id="template-wedding-email" class="form-control required" value="{{order.email}}" required><br>
+
+                                                                    <button type="submit">cancel Now</button>
+                                                                </div>
+                                                                <br>
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="tab-pane bg-light p-4 mt-4" id="attending-tab-2">
+                                                            <div class="row">
+                                                                <div class="col-md-12 bottommargin-sm">
+                                                                    <h4 class="mb-2"><i class="icon-laugh-squint1 text-danger mr-2 position-relative" style="top: 1px;"></i>Looks like you came here by mistake</h4>
+                                                                    <p class="mb-0">Let's get back to shopping!!</p>
+                                                                </div>
+                                                                <div class="col-md-12">
+
+                                                                    <a href="/"> <button type="button"  style="margin-left:250px; border-radius:10px;">Continue shopping</button></a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-12 d-none">
+                                                    <input type="text" id="template-wedding-botcheck" name="template-wedding-botcheck" value="" />
+                                                </div>
+
+
+                                                <input type="hidden" name="prefix" value="template-wedding-">
+
+                                            </div>
+
+                                        </form>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+{% block js %}
+	<script>
+		jQuery(document).ready( function($){
+			$(window).on( 'pluginIsotopeReady', function(){
+				$('#shop').isotope({
+					transitionDuration: '0.65s',
+					getSortData: {
+						name: '.product-title',
+						price_lh: function( itemElem ) {
+							if( $(itemElem).find('.product-price').find('ins').length > 0 ) {
+								var price = $(itemElem).find('.product-price ins').text();
+							} else {
+								var price = $(itemElem).find('.product-price').text();
+							}
+
+							priceNum = price.split("₹");
+
+
+							return parseFloat( priceNum[1] );
+						},
+						price_hl: function( itemElem ) {
+							if( $(itemElem).find('.product-price').find('ins').length > 0 ) {
+								var price = $(itemElem).find('.product-price ins').text();
+							} else {
+								var price = $(itemElem).find('.product-price').text();
+							}
+
+							priceNum = price.split("₹");
+
+
+							return parseFloat( priceNum[1] );
+						}
+					},
+					sortAscending: {
+						name: true,
+						price_lh: true,
+						price_hl: false
+					}
+				});
+
+				$('.custom-filter:not(.no-count)').children('li:not(.widget-filter-reset)').each( function(){
+					var element = $(this),
+						elementFilter = element.children('a').attr('data-filter'),
+						elementFilterContainer = element.parents('.custom-filter').attr('data-container');
+
+					elementFilterCount = Number( jQuery(elementFilterContainer).find( elementFilter ).length );
+
+					element.append('<span>'+ elementFilterCount +'</span>');
+
+				});
+
+				$('.shop-sorting li').click( function() {
+					$('.shop-sorting').find('li').removeClass( 'active-filter' );
+					$(this).addClass( 'active-filter' );
+					var sortByValue = $(this).find('a').attr('data-sort-by');
+					$('#shop').isotope({ sortBy: sortByValue });
+					return false;
+				});
+			});
+        });
+        function isNumberKey(evt){
+            //var e = evt || window.event;
+            var charCode = (evt.which) ? evt.which : evt.keyCode
+            if (charCode != 46 && charCode > 31
+            && (charCode < 48 || charCode > 57))
+                return false;
+                return true;
+            }
+    </script>
+		 {% endblock %}
+{% endblock %}
+
+

@@ -1,0 +1,165 @@
+{% extends './basic.html' %}
+{% load static %}
+{% load cart %}
+{% load custom_filter %}
+{% block title %}| Shop{% endblock %}
+{% block style %}
+{% endblock %}
+  {% block body %}
+
+		<!-- Content
+		============================================= -->
+		<section id="content">
+			<div class="content-wrap">
+
+						<div class="container clearfix">
+
+					<div class="row gutter-40 col-mb-80">
+								<!-- Sidebar
+						============================================= -->
+						<div class="sidebar col-lg-3">
+							<div class="sidebar-widgets-wrap">
+								<div class="widget widget-filter-links">
+
+									<h4>Sort By</h4>
+									<ul class="shop-sorting pl-2">
+										{% if subcategory != "Low-to-High" and subcategory != "High to Low" and subcategory != None  %}
+										<li><a href="/shop/{{category}}/{{subcategory}}/" data-sort-by="original-order">Clear</a></li>
+										{% else %}
+										<li><a href="/shop/{{category}}/" data-sort-by="original-order">Clear</a></li>
+										{% endif %}
+
+										{% if subcategory != "Low-to-High" and subcategory != "High to Low" and subcategory != None  %}
+										<li><a href='/shop/{{category}}/{{subcategory}}/Low-to-High' >Price: Low to High</a></li>
+										<li><a href="/shop/{{category}}/{{subcategory}}/High to Low" data-sort-by="price_hl">Price: High to Low</a></li>
+										{% else %}
+										<li><a href='/shop/{{category}}/Low-to-High' >Price: Low to High</a></li>
+										<li><a href="/shop/{{category}}/High to Low" data-sort-by="price_hl">Price: High to Low</a></li>
+										{% endif %}
+
+									</ul>
+
+								</div>
+
+							</div>
+						</div>
+						<!-- .sidebar end -->
+						
+						<!-- Post Content
+						============================================= -->
+						<div class="postcontent col-lg-9 order-lg-last">
+							<!-- Shop
+							============================================= -->
+							
+							<div id="shop" class="shop row grid-container gutter-20" data-layout="fitRows">
+								
+
+								    {% for i in allprods %}
+
+										<div class="product col-md-4 col-sm-6 sf-newarrivals">
+										<div class="grid-inner">
+											<div class="product-image" id="{{i.sr_no}}">
+												<a href="/product_detail/{{i.id}}"><img src="{{i.image1.url}}"></a>
+												{% if i.image2 %}
+												<a href="/product_detail/{{i.id}}"><img src="{{i.image2.url}}" ></a>
+												{% endif %}
+												{% if i.lable %}
+												<div class="sale-flash badge badge-success p-2">{{i.lable}}</div>
+												{% endif %}
+												{% if i.stock < 1 %}
+												<div class="sale-flash1 badge badge-danger p-2" id="{{i.id}}" value="Out">Out of Stock</div>
+												{% endif %}
+												<script type="text/javascript">grayfunc("{{i.sr_no}}","{{i.id}}");</script>
+
+											</div>
+											<div class="product-desc">
+												<a href="/product_detail/{{i.id}}" class="btn btn-dark" >Shop Now</a>
+												<div class="product-title"><h3><a href="/product_detail/{{i.id}}">{{i.name|slice:40}}...</a></h3></div>
+
+
+													  {% if i.price == 0 %}
+												<div class="product-price">
+												<ins>{{i.discount_price|currency}}</ins>
+												</div>
+												{% else %}
+												<div class="product-price">
+												<del>{{i.price|currency}}</del> <ins>{{i.discount_price|currency}}</ins>
+													</div>
+												{% endif %}
+
+
+											</div>
+										</div>
+									</div>
+
+									{% endfor %}
+
+							</div><!-- #shop end -->
+							
+
+											{% if allprods.has_next or allprods.has_previous %}
+												  <ul class="pagination justify-content-center my-6">
+													  {% if allprods.has_previous %}
+													<li class="page-item">
+														{% if filter == "High to Low" or filter == "Low-to-High" %}
+														<a class="page-link" href="/shop/{{category}}/{{subcategory}}/{{filter}}/?page={{allprods.previous_page_number}}">Previous</a>
+														{% elif subcategory  %}
+													  <a class="page-link" href="/shop/{{category}}/{{subcategory}}/?page={{allprods.previous_page_number}}">Previous</a>
+														{% else %}
+													  <a class="page-link" href="/shop/{{category}}/?page={{allprods.previous_page_number}}">Previous</a>
+														{% endif %}
+													</li>
+													  {% endif %}
+
+														 {% for p in allprods.paginator.page_range %}
+																{% if allprods.number == p %}
+																	{% if filter == "High to Low" or filter == "Low-to-High" %}
+													  				<li class="page-item active"><a class="page-link" href="/shop/{{category}}/{{subcategory}}/{{filter}}/?page={{p}}">{{p}}</a></li>
+																	{% elif subcategory %}
+																	<li class="page-item active"><a class="page-link" href="/shop/{{category}}/{{subcategory}}/?page={{p}}">{{p}}</a></li>
+																	{% else %}
+																	<li class="page-item active"><a class="page-link" href="/shop/{{category}}/?page={{p}}">{{p}}</a></li>
+																	{% endif %}
+																{% else %}
+													  				{% if filter == "High to Low" or filter == "Low-to-High" %}
+													  				<li class="page-item"><a class="page-link" href="/shop/{{category}}/{{subcategory}}/{{filter}}/?page={{p}}">{{p}}</a></li>
+																	{% elif subcategory  %}
+																	<li class="page-item"><a class="page-link" href="/shop/{{category}}/{{subcategory}}/?page={{p}}">{{p}}</a></li>
+																	{% else %}
+																	<li class="page-item"><a class="page-link" href="/shop/{{category}}/?page={{p}}">{{p}}</a></li>
+																	{% endif %}
+																{% endif %}
+														 {% endfor %}
+													  {% if allprods.has_next %}
+													<li class="page-item">
+														{% if filter == "High to Low" or filter == "Low-to-High" %}
+														<a class="page-link" href="/shop/{{category}}/{{subcategory}}/{{filter}}/?page={{allprods.next_page_number}}">Next</a>
+														{% elif subcategory  %}
+													  <a class="page-link" href="/shop/{{category}}/{{subcategory}}/?page={{allprods.next_page_number}}">Next</a>
+														{% else %}
+													  <a class="page-link" href="/shop/{{category}}/?page={{allprods.next_page_number}}">Next</a>
+														{% endif %}
+													</li>
+													  {% endif %}
+												  </ul>
+											{% endif %}
+
+						</div><!-- .postcontent end -->
+
+				
+
+					</div>
+
+
+				</div>
+
+			</div>
+		</section>
+<!-- #content end -->
+
+	{% block js %}
+
+	{% endblock %}
+{% endblock %}
+
+

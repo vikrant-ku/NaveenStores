@@ -1,0 +1,444 @@
+{% extends './basic.html' %}
+{% load static %}
+{% load cart %}
+{% load custom_filter %}
+{% block title %}| Home{% endblock %}
+{% block head %}
+
+<script>
+									 function grayfunc(e,n)
+										 {
+			
+										 	var tempvar 
+											tempvar = document.getElementById(n).getAttribute('value')
+
+											if ( tempvar = 'Out'){
+												document.getElementById(e).className+=' black';
+												tempvar = ""
+												
+											}	
+										} 
+</script>
+{% endblock %}
+        		 {% block onload %}
+
+        {% endblock %}
+
+  {% block body %}
+
+		<!-- Slider
+		============================================= -->
+		<section id="slider" class="slider-element swiper_wrapper" data-autoplay="6000" data-speed="800" data-loop="true" data-grab="true" data-effect="fade" data-arrow="false" style="height: 600px;">
+
+			<div class="swiper-container swiper-parent">
+				<div class="swiper-wrapper">
+					<div class="swiper-slide dark">
+						<div class="container">
+							<div class="slider-caption slider-caption-center">
+								<div>
+
+								</div>
+							</div>
+						</div>
+						<div class="swiper-slide-bg" style="background-image: url({% static 'demos/shop/images/1.png' %}); background-position:center;"></div>
+					</div>
+					<div class="swiper-slide dark">
+						<div class="container">
+							<div class="slider-caption slider-caption-center">
+								<div>
+
+								</div>
+							</div>
+						</div>
+						<div class="swiper-slide-bg" style="background-image: url({% static 'demos/shop/images/2.png' %}); background-position: center 20%;"></div>
+					</div>
+					<div class="swiper-slide dark">
+						<div class="container">
+							<div class="slider-caption slider-caption-center">
+								<div>
+
+								</div>
+							</div>
+						</div>
+						<div class="swiper-slide-bg" style="background-image: url({% static 'demos/shop/images/3.png' %}); background-position: center 40%;"></div>
+					</div>
+				</div>
+				<div class="swiper-pagination"></div>
+			</div>
+
+		</section><!-- #Slider End -->
+
+		<!-- Content
+		============================================= -->
+		<section id="content">
+			<div class="content-wrap">
+				<div class="container clearfix" >
+
+					<!-- Shop Categories
+					============================================= -->
+					<div class="fancy-title title-border title-center mb-4">
+						<h4>Shop popular categories</h4>
+					</div>
+
+					<div class="row shop-categories clearfix">
+
+
+						<div class="col-lg-4">
+							<a href="/shop/Ethnics Wear" style="background: url({% static 'images/shop/2.jpg' %}) no-repeat center center; background-size: cover;">
+								<div class="vertical-middle dark center">
+									<div class="heading-block m-0 border-0">
+										<h3 class="nott font-weight-semibold ls0">Ethnic Wear</h3>
+										 <small class="button bg-white text-dark button-light button-mini">Shop Now</small>
+									</div>
+								</div>
+							</a>
+						</div>
+						<div class="col-lg-4">
+							<a href="/shop/Sarees" style="background: url({% static 'images/shop/1.jpg' %}) no-repeat center center; background-size: cover;">
+								<div class="vertical-middle dark center">
+									<div class="heading-block m-0 border-0">
+										<h3 class="nott font-weight-semibold ls0">Sarees</h3>
+									<small class="button bg-white text-dark button-light button-mini">Shop Now</small>
+									</div>
+								</div>
+							</a>
+						</div>
+						<div class="col-lg-4">
+							<a href="/shop/Lehenga Choli" style="background: url({% static 'images/lehnga/wedding/3.jpg' %}) no-repeat center center; background-size: cover;">
+								<div class="vertical-middle dark center">
+									<div class="heading-block m-0 border-0">
+										<h3 class="nott font-weight-semibold ls0">Lehenga Choli</h3>
+										 <small class="button bg-white text-dark button-light button-mini">Shop Now</small>
+									</div>
+								</div>
+							</a>
+						</div>
+					</div>
+
+					<!-- Featured Carousel
+					============================================= -->
+
+				</div>
+
+				<!-- New Arrival Section
+				============================================= -->
+				<div class="section my-4">
+					<div class="container" >
+						<div class="row align-items-stretch">
+							<div class="col-md-5">
+								<div class="row">
+									<div class="col-md-12 center p-5">
+										<div class="heading-block mb-1 border-bottom-0 mx-auto p-5">
+											<div class="font-secondary text-black-50 mb-1">New Arrivals</div>
+											<h3 class="nott ls0">Fresh Arrivals</h3>
+											<p class="font-weight-normal mt-2 mb-3 text-muted" style="font-size: 17px; line-height: 1.4">Stay in trend with the latest collection of Naveen Stores and be the fashionista you are!!!
+											</p>
+											<a href="/shop/New Arrivals" class="button bg-dark text-white button-dark button-small ml-0">Shop Now</a>
+										</div>
+									</div>
+									<div class="col-6">
+										<a href="/shop/Naveen Exclusive"><img src="{% static 'demos/shop/images/sections/1-2.jpg' %}" alt="Image"></a>
+									</div>
+									<div class="col-6">
+										<a href="/shop/Naveen Exclusive" ><img src="{% static 'demos/shop/images/sections/1-3.jpg' %}" alt="Image"></a>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-7 min-vh-50">
+								<a href="https://www.youtube.com/watch?v=r82EYBQ5Wzo" data-lightbox="iframe" class="d-block position-relative h-100" style="background: url({% static 'demos/shop/images/sections/1.jpg' %}) center center no-repeat; background-size: cover;">
+
+									<div class="vertical-middle text-center">
+										<div class="play-icon"><i class="icon-play-sign display-3 text-light"></i></div>
+									</div>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="clear"></div>
+
+				<!-- New Arrivals Men
+				============================================= -->
+				<div class="container clearfix">
+
+					<div class="fancy-title title-border mt-4 title-center">
+						<h4>Weekly Featured Items</h4>
+					</div>
+
+					<div id="oc-products" class="owl-carousel products-carousel carousel-widget" data-margin="20" data-loop="true" data-autoplay="5000" data-nav="true" data-pagi="false" data-items-xs="1" data-items-sm="2" data-items-md="3" data-items-lg="4" data-items-xl="5">
+
+						<!-- Shop Item 1
+						============================================= -->
+						{% for i in weekely %}
+						<div class="oc-item">
+							<div class="product" >
+								<div class="product-image" id="{{i.sr_no}}">
+
+
+
+									<a href="/product_detail/{{i.id}}"><img src="{{i.image1.url}}" alt="Round Neck T-shirts"></a>
+									{% if i.image2 %}
+									<a href="/product_detail/{{i.id}}"><img src="{{i.image2.url}}" alt="Round Neck T-shirts"></a>
+									{% endif %}
+									{% if i.lable %}
+									<div class="sale-flash badge badge-success p-2">{{i.lable}}</div>
+									{% endif %}
+									{% if i.stock < 1 %}
+									<div class="sale-flash1 badge badge-danger p-2" id="{{i.id}}" value="Out">Out of Stock</div>
+									{% endif %}
+
+										<script type="text/javascript">grayfunc("{{i.sr_no}}","{{i.id}}");</script>
+								</div>
+								<div class="product-desc">
+										<a href="/product_detail/{{i.id}}" class="btn btn-dark" >Shop Now</a>
+									<div class="product-title mb-1"><h3><a href="/product_detail/{{i.id}}">{{i.name}}</a></h3></div>
+									 {% if i.price == 0 %}
+									<div class="product-price font-primary"><ins>{{i.discount_price|currency}}</ins></div>
+									{% else %}
+									<div class="product-price font-primary"><del class="mr-1">{{i.price|currency}}</del> <ins>{{i.discount_price|currency}}</ins></div>
+									{% endif %}
+
+								</div>
+							</div>
+						</div>
+						{% endfor %}
+
+
+
+
+					</div>
+
+
+					<div class="fancy-title title-border mt-4 title-center">
+						<h4>New Arrival Items</h4>
+					</div>
+
+					<div id="oc-products" class="owl-carousel products-carousel carousel-widget" data-margin="20" data-loop="true" data-autoplay="5000" data-nav="true" data-pagi="false" data-items-xs="1" data-items-sm="2" data-items-md="3" data-items-lg="4" data-items-xl="5">
+
+						<!-- Shop Item 1
+						============================================= -->
+						{% for i in new_arrival %}
+						<div class="oc-item">
+							<div class="product" >
+								<div class="product-image" id="{{i.sr_no}}">
+									
+									
+
+									<a href="/product_detail/{{i.id}}"><img src="{{i.image1.url}}" alt="Round Neck T-shirts"></a>
+									{% if i.image2 %}
+									<a href="/product_detail/{{i.id}}"><img src="{{i.image2.url}}" alt="Round Neck T-shirts"></a>
+									{% endif %}
+									{% if i.lable %}
+									<div class="sale-flash badge badge-success p-2">{{i.lable}}</div>
+									{% endif %}
+									{% if i.stock < 1 %}
+									<div class="sale-flash1 badge badge-danger p-2" id="{{i.id}}" value="Out">Out of Stock</div>
+									{% endif %}
+
+										<script type="text/javascript">grayfunc("{{i.sr_no}}","{{i.id}}");</script>
+								</div>
+								<div class="product-desc">
+										<a href="/product_detail/{{i.id}}" class="btn btn-dark" >Shop Now</a>
+									<div class="product-title mb-1"><h3><a href="/product_detail/{{i.id}}">{{i.name}}</a></h3></div>
+									 {% if i.price == 0 %}
+									<div class="product-price font-primary"><ins>{{i.discount_price|currency}}</ins></div>
+									{% else %}
+
+									<div class="product-price font-primary"><del class="mr-1">{{i.price|currency}}</del> <ins>{{i.discount_price|currency}}</ins></div>
+									{% endif %}
+
+								</div>
+							</div>
+						</div>
+						{% endfor %}
+
+
+
+					</div>
+
+
+				</div>
+
+				<!-- Sign Up
+				============================================= -->
+				{% if 'customer_id'  not in request.session %}
+				<div class="section my-4 py-5">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-12">
+								<div class="row align-items-stretch align-items-center">
+									<div class="col-md-7 min-vh-50" style="background: url({% static 'demos/shop/images/sections/1-2.jpg' %}) center center no-repeat; background-size: cover;">
+										<div class="vertical-middle pl-5">
+
+										</div>
+									</div>
+									<div class="col-md-5 bg-white">
+										<div class="card border-0 py-2">
+											<div class="card-body p-3 mt-5">
+												<h3 class="card-title mb-4 ls0">Sign up to get the most out of shopping.</h3>
+												<ul class="iconlist ml-3">
+													<li><i class="icon-circle-blank text-black-50"></i> Receive Exclusive Sale Alerts</li>
+												</ul>
+											<center><a href="/signup/" class="button button-rounded ls0 font-weight-semibold ml-0 mb-2 nott px-4">Sign Up</a></center><br>
+												<small class="font-italic text-black-50">Don't worry, it's totally free.</small>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				{% endif %}
+
+				<div class="container">
+					<div class="section section-features bg-transparent mt-0 p-0 clearfix">
+						<div class="container clearfix" style="margin-top: 50px;">
+							<div class="row col-mb-50 col-mb-lg-80">
+								<div class="col-md-4">
+									<div class="feature-box media-box">
+										<div class="fbox-icon position-relative mb-4" style="background-image: url('demos/movers/images/featured-img/3.jpg');">
+											<i class="icon-bullseye"></i>
+										</div>
+										<div class="fbox-content">
+											<h3 class="font-weight-semibold">Our Mission</h3>
+											<p class="text-muted">We at Naveen Stores firmly believe that Fashion should be for everyone, and that’s exactly what our mission is, “To provide affordable yet chic fashion wear for all.”</p>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="feature-box media-box">
+										<div class="fbox-icon position-relative mb-4" style="background-image: url('demos/movers/images/featured-img/2.jpg');">
+											<i class="icon-thumbs-up2"></i>
+										</div>
+										<div class="fbox-content">
+											<h3 class="font-weight-semibold">100% Original</h3>
+											<p class="text-muted">Shop with us for 100% original  and one of a kind designs.</p>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="feature-box media-box">
+										<div class="fbox-icon position-relative mb-4" style="background-image: url('demos/movers/images/featured-img/3.jpg');">
+											<i class="icon-shop"></i>
+										</div>
+										<div class="fbox-content">
+											<h3 class="font-weight-semibold">Live Shopping</h3>
+											<p class="text-muted">Don’t miss a chance to shop for the latest fashion. Log into Facebook for live shopping sessions everyday!!!</p>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="feature-box media-box">
+										<div class="fbox-icon position-relative mb-4">
+											<i class="icon-credit-cards"></i>
+										</div>
+										<div class="fbox-content">
+											<h3 class="font-weight-semibold">Payment Options</h3>
+											<p class="text-muted">We offer multiple payment options, like Credit Card, Debit Card, Google Pay, UPI,  Paytm, and Net Banking Facility.</p>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="feature-box media-box">
+										<div class="fbox-icon position-relative mb-4" style="background-image: url('demos/movers/images/featured-img/2.jpg');">
+											<i class="icon-line2-globe"></i>
+										</div>
+										<div class="fbox-content">
+											<h3 class="font-weight-semibold">Shipping world-wide</h3>
+											<p class="text-muted">We ship world-wide, so you can flaunt the desi in you, wherever you want.</p>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="feature-box media-box">
+										<div class="fbox-icon position-relative mb-4" style="background-image: url('demos/movers/images/featured-img/1.jpg');">
+											<i class="icon-home1"></i>
+										</div>
+										<div class="fbox-content">
+											<h3 class="font-weight-semibold">Our Company’s values</h3>
+											<p class="text-muted">Our Powerful Yet Simple Rule "Always Give Customers More Than They Expect", and we have been sticking to that since the day we started. </p>
+										</div>
+									</div>
+								</div>
+								
+							</div>
+						</div>
+					</div>
+	
+					<div class="clear"></div>
+
+
+					<div class="container clearfix">
+
+				<div class="row align-items-stretch gutter-20 mb-5 min-vh-60">
+	<div class="col-xl-8 min-vh-50">
+		<div class="fslider h-100" data-arrows="false">
+			<div class="flexslider">
+				<div class="slider-wrap">
+					<div class="slide">
+
+							<img src="{% static 'images/shop/slider/1.jpg' %}" alt="Shop Image">
+						</a>
+					</div>
+					<div class="slide">
+
+							<img src="{% static 'images/shop/slider/2.jpg' %}" alt="Shop Image">
+						</a>
+					</div>
+					<div class="slide">
+
+							<img src="{% static 'images/shop/slider/3.jpg' %}" alt="Shop Image">
+						</a>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="col-xl-4">
+		<div class="row align-items-stretch gutter-20 min-vh-25 h-100">
+			<div class="col-12 col-md-6 col-xl-12 min-vh-25 min-vh-md-0">
+				<a href="{% static 'images/shop/12.jpg' %}" class="grid-inner d-block h-100" style="background-image: url({% static 'images/shop/12.jpg' %});"></a>
+			</div>
+        </div>
+	</div>
+
+
+</div>
+			</div>
+				</div>
+
+
+
+				<!-- App Buttons
+				============================================= -->
+				<div class="section pb-0 mb-0" style="background-color: #f8f5f0">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-6 offset-1 bottommargin-lg d-flex flex-column align-self-center">
+								<h3 class="card-title font-weight-normal ls0">Follow. Find. Favorite.<br>Discover Fashion on the Go.</h3>
+								<span>Proactively enable Corporate Benefits.</span>
+							</div>
+							<div class="col-md-4 d-none d-md-flex align-items-end">
+								<img src="{% static 'demos/shop/images/bg.jpg' %}" alt="Image" class="mb-0">
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Last Section
+				============================================= -->
+
+			</div>
+		</section><!-- #content end -->
+
+
+{% endblock %}
+{% block js %}
+
+
+{% endblock %}
+

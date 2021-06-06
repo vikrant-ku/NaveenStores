@@ -1,0 +1,495 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<meta name="author" content="SemiColonWeb" />
+    <link rel="icon" href="{%static 'images/logo.png' %}" type="image/x-icon"/>
+
+	<!-- Stylesheets
+    ============================================= -->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
+
+     <link rel="stylesheet" href="{% static 'dist/drift-basic.css' %}">
+    <link rel="stylesheet" href="{% static 'dist/drift-basic.css' %}">
+    <script src="{% static 'dist/Drift.js' %}"></script>
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700|Montserrat:300,400,500,600,700|Merriweather:300,400,300i,400i&display=swap" rel="stylesheet" type="text/css" />
+	<!-- shop Demo Specific Stylesheet -->
+	<link rel="stylesheet" href="{% static 'demos/shop/shop.css' %}" type="text/css" />
+	<link rel="stylesheet" href="{% static 'demos/shop/css/fonts.css' %}" type="text/css" />
+	<!-- / -->
+
+	<link rel="stylesheet" href="{% static 'css/font-icons.css' %}" type="text/css" />
+	<link rel="stylesheet" href="{% static 'css/animate.css' %}" type="text/css" />
+	<link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}" type="text/css" />
+
+	<link rel="stylesheet" href="{% static 'css/custom.css' %}" type="text/css" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" type="text/css" />
+
+	<link rel="stylesheet" href="{% static 'css/dark.css' %}" type="text/css" />
+	<link rel="stylesheet" href="{% static 'css/swiper.css' %}" type="text/css" />
+    <link rel="stylesheet" href="{% static 'style.css' %}" type="text/css" />
+      <link rel="stylesheet" href="{% static 'css/font-icons.css' %}" type="text/css" />
+
+	<!-- Document Title
+	============================================= -->
+	<title>Naveen Store{% block title %} {% endblock %}</title>
+
+    {% block style %}
+
+    {% endblock %}
+
+      <style type="text/css">
+
+    </style>
+
+    <script>
+		 function grayfunc(e,n)
+    		 {
+			 	var tempvar
+				tempvar = document.getElementById(n).getAttribute('value')
+				if ( tempvar = 'Out'){
+					document.getElementById(e).className+=' black';
+					tempvar = ""
+					}
+			}
+</script>
+
+{% block head %} {% endblock %}
+	</head>
+
+
+<body class="stretched" >
+	<!-- Document Wrapper
+	============================================= -->
+<div id="wrapper" class="clearfix">
+
+            {% for message in messages %}
+        <div class="alert alert-{{message.tags}} mb-0 alert-dismissible fade show" role="alert">
+        <strong>Message : </strong>{{message}}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      {% endfor %}
+
+        {% block onload %} {% endblock %}
+
+<!-- Top Bar
+		============================================= -->
+		<div id="top-bar">
+			<div class="container">
+
+				<div class="row justify-content-between align-items-center">
+					<div class="col-12 col-md-auto">
+                        <p class="mb-0 py-2 text-center text-md-left"><strong>Call:</strong><a href="tel:+919853156000" style="color: #000000">098531 56000</a> | <strong>Email:</strong><a href="mailto: info@naveenstore.com" style="color: #000000"> info@naveenstores.com</a></p>
+					</div>
+
+					<div class="col-12 col-md-auto">
+
+						<!-- Top Links
+						============================================= -->
+						<div class="top-links on-click">
+							<ul class="top-links-container">
+                                  <!-- Top Search
+                        ============================================= -->
+                        <div id="top-account">
+                            {% if 'customer_id' in request.session %}
+    
+                                <a href="/profile/" ><i class="icon-line2-user mr-1 position-relative" style="top: 1px; color:#2f090d;"></i><span class=" d-sm-inline-block font-primary font-weight-medium" style="color:#2f090d;">{{ request.session.customer_name }}&nbsp;</span></a>
+                                 <a href="/logout/"  ><i class="icon-signout mr-1 position-relative" style="top: 1px; color:#2f090d;"></i><span class=" d-sm-inline-block font-primary font-weight-medium" style="color:#2f090d;">Logout</span></a>
+                                {% else %}
+                                <a href="/login/"  ><i class="icon-line2-login mr-1 position-relative" style="top: 1px; color:#2f090d;"></i><span class=" d-sm-inline-block font-primary font-weight-medium" style="color:#2f090d;">Login</span></a>
+                               <a href="/signup/" ><i class="icon-line2-user mr-1 position-relative" style="top: 1px; color:#2f090d;"></i><span class=" d-sm-inline-block font-primary font-weight-medium" style="color:#2f090d;">Register</span></a>
+                            {% endif %}
+                            </div><!-- #top-search end -->
+                            
+							
+					</div>
+				</div>
+
+			</div>
+		</div><!-- #top-bar end -->
+    	<!-- Header
+		============================================= -->
+		<header id="header">
+			<div id="header-wrap">
+				<div class="container">
+					<div class="header-row">
+
+					     <!-- Logo-check
+                    ============================================= -->
+                    <div id="logo">
+                        <a href="/" class="standard-logo"><img src="{% static 'images/anil.png' %}" alt="Naveen"></a>
+                        <a href="/" class="retina-logo"><img src="{% static 'images/logo1.png' %}" alt="Naveen Logo"></a>
+                    </div><!-- #logo end -->
+
+						<div class="header-misc"  class="mr-lg-4">
+
+
+						
+                        <!-- Top Cart
+                        ============================================= -->
+                        <div id="top-cart" class="header-misc-icon d-sm-block">
+                            <a href="/cart/"><i class="icon-line-shopping-cart"></i>
+                                    {% if 'cart' in request.session %}
+                                <span class="top-cart-number">{{len}}</span></a>
+                                        {% else %}
+                                        <span class="top-cart-number">0</span></a>
+                                        {% endif %}
+                        </div>
+                        <!-- #top-cart end -->
+                        <div id="primary-menu-trigger">
+							<svg class="svg-trigger" viewBox="0 0 100 100" style="color: aqua !important;"><path d="m 30,33 h 40 c 3.722839,0 7.5,3.126468 7.5,8.578427 0,5.451959 -2.727029,8.421573 -7.5,8.421573 h -20"></path><path d="m 30,50 h 40"></path><path d="m 70,67 h -40 c 0,0 -7.5,-0.802118 -7.5,-8.365747 0,-7.563629 7.5,-8.634253 7.5,-8.634253 h 20"></path></svg>
+						</div>
+                        <!-- Top Search
+                            ============================================= -->
+                           
+                            <form id="demo-2" class="header-misc-icon" action="/search/" method="get">
+                                <input type="search" class="icon-line-search" name="q" class="form-contro" value="" autocomplete="off">
+                            </form>
+                            <!-- #top-search end -->
+						
+
+                        </div>
+                        	
+
+					
+
+						<!-- Primary Navigation
+						============================================= -->
+						<nav class="primary-menu" >
+
+							<ul class="menu-container">
+                                <li class="menu-item"><a class="menu-link" href="/"><div>Home</div></a></li>
+                                <li class="menu-item"><a class="menu-link" href="/shop/Naveen Exclusive"><div>Naveen Exclusives</div></a></li>
+
+								<!-- Mega Menu
+                                ============================================= -->
+                                <li class="menu-item mega-menu"><a class="menu-link" href="/shop/Ethnics Wear"><div>Ethnic Wear</div></a>
+                                    <div class="mega-menu-content mega-menu-style-2 ">
+                                        <div class="container">
+                                            <div class="row">                                  
+                                                <ul class="sub-menu-container mega-menu-column border-left-0 col-lg-3">
+                                                    <li class="menu-item mega-menu-title"><a class="menu-link" href="#"><div>Shop by Style</div></a>
+                                                        <ul class="sub-menu-container">
+                                                            <li class="menu-item"><a class="menu-link" href="/shop/Ethnics Wear/Anarkali"><div>Anarkali</div></a></li>
+                                                            <li class="menu-item"><a class="menu-link" href="/shop/Ethnics Wear/Churidar"><div>Churidar</div></a></li>
+                                                            <li class="menu-item"><a class="menu-link" href="/shop/Ethnics Wear/Gharara Suits"><div>Gharara Suits</div></a></li>
+                                                            <li class="menu-item"><a class="menu-link" href="/shop/Ethnics Wear/Pakistani Suits"><div>Pakistani Suits</div></a></li>
+                                                            <li class="menu-item"><a class="menu-link" href="/shop/Ethnics Wear/Palazzo Suits"><div>Palazzo Suits</div></a></li>
+                                                            <li class="menu-item"><a class="menu-link" href="/shop/Ethnics Wear/Pant Suits"><div>Pant Suits</div></a></li>
+                                                            <li class="menu-item"><a class="menu-link" href="/shop/Ethnics Wear/Punjabi Suits"><div>Punjabi Suits</div></a></li>
+                                                        </ul>
+                                                    </li>    
+                                                </ul>
+                                                <ul class="sub-menu-container mega-menu-column border-left-0 col-lg-3">
+                                                    <li class="menu-item mega-menu-title"><a class="menu-link" href="#"><div>Shop by Occasion</div></a>
+                                                        <ul class="sub-menu-container">
+                                                            <li class="menu-item"><a class="menu-link" href="/shop/Ethnics Wear/Bridal"><div>Bridal</div></a></li>
+                                                            <li class="menu-item"><a class="menu-link" href="/shop/Ethnics Wear/Casual"><div>Casual</div></a></li>
+                                                            <li class="menu-item"><a class="menu-link" href="/shop/Ethnics Wear/Festive"><div>Festive</div></a></li>
+                                                            <li class="menu-item"><a class="menu-link" href="/shop/Ethnics Wear/Bridal"><div>Party</div></a></li>
+                                                         </ul>
+                                                    </li>    
+                                                </ul>   
+                                                <ul class="sub-menu-container mega-menu-column col-lg-2 border-left-0">
+                                                    <li class="card p-0 bg-transparent border-0">
+                                                        <img class="card-img-top" src="{% static 'demos/shop/images/lehnga.jpg' %}" alt="image cap">
+    
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+								<li class="menu-item mega-menu"><a class="menu-link" href="/shop/Lehenga Choli/"><div>Lehenga Choli</div></a>
+									<div class="mega-menu-content mega-menu-style-2">
+										<div class="container">
+											<div class="row">                                
+                                            <ul class="sub-menu-container mega-menu-column border-left-0 col-lg-3">
+                                                <li class="menu-item mega-menu-title"><a class="menu-link" href="#"><div>Shop by Style</div></a>
+                                                    <ul class="sub-menu-container">
+                                                        <li class="menu-item"><a class="menu-link" href="/shop/Lehenga Choli/Lace Work"><div>Lace Work</div></a></li>
+                                                        <li class="menu-item"><a class="menu-link" href="/shop/Lehenga Choli/Sequins Work"><div>Sequins Work</div></a></li>
+                                                        <li class="menu-item"><a class="menu-link" href="/shop/Lehenga Choli/Stone Work"><div>Stone Work</div></a></li>
+                                                        <li class="menu-item"><a class="menu-link" href="/shop/Lehenga Choli/Zari Work"><div>Zari Work</div></a></li>
+                                                    </ul>
+                                                </li>
+
+                                            </ul>
+                                            <ul class="sub-menu-container mega-menu-column border-left-0 col-lg-3">
+                                                <li class="menu-item mega-menu-title"><a class="menu-link" href="#"><div>Shop by Occasion</div></a>
+                                                    <ul class="sub-menu-container">
+                                                        <li class="menu-item"><a class="menu-link" href="/shop/Lehenga Choli/Bridal"><div>Bridal</div></a></li>
+                                                        <li class="menu-item"><a class="menu-link" href="/shop/Lehenga Choli/Casual"><div>Casual</div></a></li>
+                                                        <li class="menu-item"><a class="menu-link" href="/shop/Lehenga Choli/Festive"><div>Festive</div></a></li>
+                                                        <li class="menu-item"><a class="menu-link" href="/shop/Lehenga Choli/Party"><div>Party</div></a></li>
+                                                     </ul>
+                                                </li>
+
+                                            </ul>
+
+                                            <ul class="sub-menu-container mega-menu-column col-lg-3 border-left-0">
+                                                <li class="card p-0 bg-transparent border-0">
+                                                    <img class="card-img-top" src="{% static 'demos/shop/images/lehnga1.jpg' %}" alt="image cap">
+
+                                                </li>
+                                            </ul>
+
+
+                                            <li class="menu-item mega-menu"><a class="menu-link" href="/shop/Sarees"><div>Sarees</div></a>
+                                                <div class="mega-menu-content mega-menu-style-2">
+                                                    <div class="container">
+                                                        <div class="row">
+                                                          <ul class="sub-menu-container mega-menu-column border-left-0 col-lg-3">
+                                                                <li class="menu-item mega-menu-title"><a class="menu-link" href="#"><div>Shop by Style</div></a>
+                                                                    <ul class="sub-menu-container">
+                                                                        <li class="menu-item"><a class="menu-link" href="/shop/Sarees/Lace Work"><div>Lace Work</div></a></li>
+                                                                        <li class="menu-item"><a class="menu-link" href="/shop/Sarees/Sequins Work"><div>Sequins Work</div></a></li>
+                                                                        <li class="menu-item"><a class="menu-link" href="/shop/Sarees/Stone Work"><div>Stone Work</div></a></li>
+                                                                        <li class="menu-item"><a class="menu-link" href="/shop/Sarees/Zari Work"><div>Zari Work</div></a></li>
+                                                                    </ul>
+                                                                </li>                
+                                                            </ul>
+                
+                                                            <ul class="sub-menu-container mega-menu-column border-left-0 col-lg-3">
+                                                                <li class="menu-item mega-menu-title"><a class="menu-link" href="#"><div>Shop by Occasion</div></a>
+                                                                    <ul class="sub-menu-container">
+                                                                        <li class="menu-item"><a class="menu-link" href="/shop/Sarees/Casual"><div>Casual</div></a></li>
+                                                                        <li class="menu-item"><a class="menu-link" href="/shop/Sarees/Lehenga"><div>Lehenga</div></a></li>
+                                                                        <li class="menu-item"><a class="menu-link" href="/shop/Sarees/Party"><div>Party</div></a></li>
+                                                                        <li class="menu-item"><a class="menu-link" href="/shop/Sarees/Wedding"><div>Wedding</div></a></li>
+                                                                     </ul>
+                                                                </li>
+                
+                                                            </ul>
+                                                       <ul class="sub-menu-container mega-menu-column col-lg-3 border-left-0">
+                                                                <li class="card p-0 bg-transparent border-0">
+                                                                    <img class="card-img-top" src="{% static 'demos/shop/images/sari.jpg' %}" alt="image cap">                
+                                                                </li>
+                                                            </ul>
+                                                            <li class="menu-item"><a class="menu-link" href="/facebookLive/"><div>Fb Live</div></a></li>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+											</div>
+										</div>
+									</div>
+								</li><!-- .mega-menu end -->
+							
+                            </ul>
+                            
+
+						</nav><!-- #primary-menu end -->
+
+					</div>
+				</div>
+			</div>
+			<div class="header-wrap-clone"></div>
+		</header><!-- #header end -->
+
+
+            {% block body %}
+
+            {% endblock %}
+
+       <footer id="footer" class="dark">
+                <div class="container">
+
+                    <!-- Footer Widgets
+                    ============================================= -->
+                    <div class="footer-widgets-wrap">
+
+                        <div class="row col-mb-50">
+                            <div class="col-lg-8">
+
+                                <div class="row col-mb-50">
+                                    <div class="col-md-4">
+
+                                        <div class="widget clearfix">
+
+
+
+                                            <p style="text-style:italic; color:white;">NaveenStores- luxurious fashion at wholesale price!!!<br>
+                                            Because being fashionable does not always have to be heavy on your pockets :)</p>
+
+                                            <div>
+
+                                                <strong>Phone:</strong><a href="tel:+919853156000"> 098531 56000</a><br>
+                                                <strong>Email:</strong><a href="mailto: info@naveenstores.com"> info@naveenstores.com</a>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="widget widget_links clearfix">
+                                            <h4>Company</h4>
+                                            <ul>
+                                                <li><a href="/">Home</a></li>
+                                                <li><a href="/about_us/">About</a></li>
+                                                <li><a href="/contact_us/">Contact</a></li>
+                                                <li><a href="/faqs/"> FAQs</a></li>
+                                                <li><a href="/blog/"> Blog</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+
+                                        <div class="widget clearfix">
+                                            <h4>Special</h4>
+                                                                <ul>
+                                                                    <marquee direction = "up" scrolldelay="200" >
+                                                                    <li>ready to ship</li>
+                                                                    <li>best Sellers</li>
+                                                                    <li>NaveenStores Exclusives</li>
+                                                                    <li>Shop All Salwar Kameez</li>
+                                                                    <li>Lace Work</li>
+                                                                    <li>Sequins Work</li>
+                                                                    <li> Stone Work</li>
+                                                                    <li> Zari Work</li>
+                                                                    </marquee>
+                                                                </ul>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="col-lg-4">
+
+                                <div class="row col-mb-50">
+                                    <div class="col-md-4 col-lg-12">
+                                    <div class="widget subscribe-widget clearfix">
+                                            <h5>Follow us on Facebook and Instagram to stay updated with the latest offers</h5>
+                                            <div class="widget-subscribe-form-result"></div>
+
+                                        <div class="mail" >
+                            <form name="subscriber" action="#"  class="mt-1 mb-0 d-flex" onload='document.subscriber.subscribe.focus()'>
+                            <input type='text' name='subscribe' id="subs" class="form-control sm-form-control required email" placeholder="Enter your Email Address" />
+                        <input type="submit" name="Validate" value="Subscribe"  class="btn btn-success" onclick="ValidateEmail(document.subscriber.subscribe)"/>
+                            </form>
+                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div><!-- .footer-widgets-wrap end -->
+
+                </div>
+
+                <!-- Copyrights
+                ============================================= -->
+                <div id="copyrights">
+                    <div class="container">
+
+                        <div class="row col-mb-30">
+
+                            <div class="col-md-6 text-center text-md-left">
+                                Copyrights &copy; 2020 All Rights Reserved by<a href="https://rohartech.com/"> RoharTech.</a><br>
+                                <div class="copyright-links"><a href="#">Terms of Use</a> / <a href="#">Privacy Policy</a></div>
+                            </div>
+
+                            <div class="col-md-6 text-center text-md-right">
+                                <div class="d-flex justify-content-center justify-content-md-end">
+                                    <a href="https://www.facebook.com/naveenstores"  class="social-icon si-small si-borderless si-facebook">
+                                        <i class="icon-facebook"></i>
+                                        <i class="icon-facebook"></i>
+                                    </a>
+
+                                    <a href="https://twitter.com/naveen_stores" class="social-icon si-small si-borderless si-twitter">
+                                        <i class="icon-twitter"></i>
+                                        <i class="icon-twitter"></i>
+                                    </a>
+                            <a href="https://in.pinterest.com/naveenstores07/"  class="social-icon si-small si-borderless si-pinterest">
+                                        <i class="icon-pinterest"></i>
+                                        <i class="icon-pinterest"></i>
+                                    </a>
+                                    <a href="https://www.instagram.com/naveenstores/" class="social-icon si-small si-borderless si-instagram">
+                                        <i class="icon-instagram"></i>
+                                        <i class="icon-instagram"></i>
+                                    </a>
+
+                                </div>
+
+                                <div class="clear"></div>
+
+                                <i class="icon-envelope2"></i><a href="mailto: info@naveenstore.com">info@naveenstores.com</a><span class="middot">&middot;</span>
+                                <i class="icon-headphones"></i><a href="tel:+919853156000"> 098531 56000 </a>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div><!-- #copyrights end -->
+            </footer><!-- #footer end -->
+            <!-- #footer end -->
+
+
+    <!-- #wrapper end -->
+</div>
+	<!-- Go To Top
+	============================================= -->
+	<div id="gotoTop" class="icon-line-arrow-up"></div>
+
+	<!-- JavaScripts
+	============================================= -->
+	<script src="{% static 'js/jquery.js' %}"></script>
+	<script src="{% static 'js/plugins.min.js' %}"></script>
+	<!-- Footer Scripts
+	============================================= -->
+	<script src="{% static 'js/functions.js' %}"></script>
+
+
+	<!-- ADD-ONS JS FILES -->
+    <script type="text/javascript">
+          function ValidateEmail(inputText)
+                                    {
+                                    var mailformat = "[a-z0-9._%+-]+@[a-z.-]+\.[a-z]{2,4}$";
+                                    if(inputText.value.match(mailformat))
+                                    {
+                                 
+                                    var r = confirm("Thanks For Susbcribe Us!");
+                                        if (r == true) {
+                                         x = "Your Data is Cleared";
+                                         window.location.href = "/" ;
+                                            }
+                                    }
+                                    else
+                                    {
+                                    alert("Please Enter Valid Email");    //The pop up alert for an invalid email address
+                                    document.subscriber.subscribe.focus();
+                                    return false;
+                                    }
+                                }
+
+
+              function myFunction(e) {
+              var x = document.getElementById(e);
+              if (x.type === "password") {
+                x.type = "text";
+              } else {
+                x.type = "password";
+              }
+            }
+</script>
+    {% block js %}
+
+    {% endblock %}
+
+
+</body>
+</html>

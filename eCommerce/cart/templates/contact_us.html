@@ -1,0 +1,89 @@
+{% extends './basic.html' %}
+{% load static %}
+
+{% block title %}| Contact Us{% endblock %}
+
+  {% block body %}
+
+
+		<!-- Content
+		============================================= -->
+
+  <section id="content">
+            <div class="content-wrap" style="background-color: #ddd">
+                <div class="container" >
+
+                   <div class="row align-items-stretch mx-0 topmargin bottommargin-lg">
+                    <div class="col-lg-5 px-0 d-none d-md-block">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2885.2889879851123!2d75.81425232200463!3d30.68447415195635!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39107b40949efa89%3A0xba8a0e4402ad5c84!2sNaveen%20Stores-Ladies%20Suit%2FKurtis%2FDresses%2FLehenga%20House%20in%20Ahmedgarh!5e0!3m2!1sen!2sin!4v1604640213787!5m2!1sen!2sin" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe> </div>
+                    <div class="col-lg-3" style="background-color: ;">
+                        <div style="padding: 40px;">
+                            <h4 class="font-body font-weight-semibold ls1">Our Location</h4>
+
+                            <div style="font-size: 15px; line-height: 1.7;">
+                                <address style="line-height: 1.7;">
+                                    <strong>Ludhiana:</strong><br>
+                                     Main Bazar Rd, Near Railway Station,<br>
+                                     Railway Station, Jandali Kalan,<br>
+                                      Ahmedgarh, Punjab 148021<br><br>
+                                    <abbr title="Phone Number"><strong>Phone: </strong></abbr> 098531 56000 </br>
+                                    <abbr title="Email Address"><strong>Email: </strong></abbr> info@naveenstores.com
+                                </address>
+
+                                <div class="clear topmargin-sm"></div>
+                                <address style="line-height: 1.7;">
+                                    <strong>Working Hours:</strong><br>
+                                    <abbr title="Phone Number"><strong>All days: </strong></abbr> 10:00AM to 8:00PM
+                                </address>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4" style="background-color:maroon;">
+                        <div class="col-padding">
+                            <div class="quick-contact-widget dark clearfix">
+
+                                <h3 class="text-capitalize ls1 font-weight-normal">Get a Quick Quote</h3>
+
+                                <div class="form-result"></div>
+
+                                <form id="quick-contact-form" name="quick-contact-form" action="/contact_us/" method="post" class="quick-contact-form mb-0">{% csrf_token %}
+
+                                    <div class="form-process">
+                                        <div class="css3-spinner">
+                                            <div class="css3-spinner-scaler"></div>
+                                        </div>
+                                    </div>
+
+                                    <input type="text" class="required sm-form-control input-block-level not-dark" id="quick-contact-form-name" name="name" value="" placeholder="Full Name" required />
+
+                                    <input type="email" class="required sm-form-control email input-block-level not-dark" id="quick-contact-form-email" name="email" value="" placeholder="Email Address" required />
+
+                                    <input type="text" class="required sm-form-control input-block-level not-dark" id="quick-contact-form-phone" name="phone" value="" placeholder="Phone Number" required/>
+
+                                    <textarea class="required sm-form-control input-block-level not-dark short-textarea" id="quick-contact-form-message" name="message" rows="5" cols="30" placeholder="What are you Looking for?"></textarea>
+
+                                    <input type="text" class="d-none" id="quick-contact-form-botcheck" name="quick-contact-form-botcheck" value="" />
+                                    <input type="hidden" name="prefix" value="quick-contact-form-">
+
+                                   <button type="submit" id="quick-contact-form-submit" name="quick-contact-form-submit" class="button button-small button-rounded button-light button-white m-0" value="submit">Send Email</button>
+
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                        </div>
+
+
+            </div>
+            </div>
+        </section><!-- #content end -->
+<!-- #content end -->
+
+
+
+
+		{% endblock %}
+

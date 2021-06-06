@@ -1,0 +1,91 @@
+{% extends './basic.html' %}
+{% load static %}
+{% load cart %}
+{% load custom_filter %}
+
+{% block title %}| Replace{% endblock %}
+{% block style %}
+
+
+{% endblock %}
+
+  {% block body %}
+
+
+<section id="content">
+
+<div class="content-wrap bg-light">
+
+    <div class="container">
+
+        <div class="row justify-content-center">
+            <div class="col-lg-7 col-md-10">
+                <div class="card my-5 shadow-sm">
+                    <div class="card-body p-5">
+
+                        <h4 class="ls4 center">Order Replace </h4>
+
+                        <div class="divider divider-sm divider-center text-dark"><i class="icon-heart21"></i></div>
+
+                        <div class="" data-alert-type="false">
+
+                            <div class="form-result"></div>
+
+                            <div class="form-process">
+                                <div class="css3-spinner">
+                                    <div class="css3-spinner-double-bounce1"></div>
+                                    <div class="css3-spinner-double-bounce2"></div>
+                                </div>
+                            </div>
+
+                                <div class="row">
+
+                                    <div class="col-12 center mb-5">
+
+                                        <h2 class="font-secondary font-italic h1">Naveen Stores Ludhiana</h2>
+                                    </div>
+                    <form action="/profile/order/order_replace" method="post" enctype="multipart/form-data">{% csrf_token %}
+                          <div class="col-12">
+                                <div class="row">
+
+                                            <input type="hidden"  name="order_id" required value="{{order.order_id}}" class="form-control required" placeholder="Enter Your order number" />
+
+                                      <div class="col-md-6 bottommargin-sm">
+                                         <label for="template-phone">Contact Number<small class="text-danger">*</small></label>
+                                         <input type="text" id="template-phone" name="phone" required value="{{order.phone}}" class="form-control required" placeholder="Enter your contact number" />
+                                     </div>
+                                    <div class="col-md-6 bottommargin-sm">
+                                         <label for="template-email">Email id <small class="text-danger">*</small></label>
+                                         <input type="email" id="template-email" name="email" required value="{{order.email}}" class="form-control required" placeholder="example@gmail.com" />
+                                     </div>
+                                     <div class="col-md-12 bottommargin-sm">
+                                         <label for="template-reason">Reason<small class="text-danger">*</small></label>
+                                         <input type="text" id="template-reason" name="reason" required  class="form-control required" placeholder="Type your reason for refund" />
+                                     </div>
+
+                                     <div class="col-md-6 bottommargin-sm">
+                                         <label for="template-file">Upload Image (Default Clothes) <small class="text-danger">*</small></label>
+                                         <input type="file" id="template-file" name="image" accept="image/*" required>
+                                     </div>
+                            </div>
+                                <input type="submit" value="Submit">
+                            <a href="/profile/"> <button type="button" style="mmargin-right:150px;">Go Back</button></a>
+                    </form>
+        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+</div>
+</section><!-- #content end -->
+
+{% block js %}
+
+		 {% endblock %}
+{% endblock %}
+
+

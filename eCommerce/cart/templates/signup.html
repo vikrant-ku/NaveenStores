@@ -1,0 +1,137 @@
+{% extends './basic.html' %}
+{% load static %}
+
+{% block title %}| Signup{% endblock %}
+{% block style %}
+
+{% endblock %}
+  {% block body %}
+<?php
+// define variables and set to empty values
+$nameErr = $emailErr = $numberErr = $passwordErr = $confirmErr = "";
+$name = $email = $number = $password =  $confirm = "";
+function test_input($data) {
+  $data = trim($data);
+  $data = stripslashes($data);
+  $data = htmlspecialchars($data);
+  return $data;
+?>
+	<!-- Content
+        ============================================= -->
+        <section id="content">
+            <div class="content-wrap py-0">
+
+
+                <div class="vertical-middle">
+                        <div class="container-fluid py-5 mx-auto">
+                            <div class="card mx-auto rounded-0 border-0" style="max-width: 300px; background-color: rgba(255,255,255,0.93);">
+                                <div class="card-body" style="padding: 40px;">
+                                <form id="login-form" name="login-form" class="mb-0 row" action="/signup/" method="post"> {% csrf_token %}
+
+                                        <h3>Create Account</h3>
+
+                                        <div class="row">
+                                            <div class="col-12 form-group">
+
+
+                                                <label for="login-form-username">Username:
+                                                <input type="text" id="login-form-username" name="register-name" onKeyPress="return ValidateAlpha(event);" value="" class="form-control " required /></label>
+                                            </div>
+                                            <div class="col-12 form-group">
+                                                <label for="form-email">Email:
+                                                <input type="email" id="form-email" name="register-email" pattern="[a-z0-9._%+-]+@[a-z.-]+\.[a-z]{2,4}$" class="form-control not-dark" required /></label>
+                                            </div>
+                                         
+
+                                          <div class="col-12 form-group">
+                                                <label for="form-phone">Mobile Number:
+                                                <input type="text" id="form-phone" name="register-phone"  class="form-control" onkeypress="return isNumberKey(event)" value=""  minlength="10" maxlength="10" required /></label>
+                                            </div> 
+
+                                         <!--    <div class="col-12 form-group">
+                                                <label >Password:</label>
+                                                <input type="password" id="myInput" name="register-password" onChange="onChange()"  class="form-control not-dark" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required />
+                                                  <span class="glyphicon" onclick="myFunction()"><i class="icon-line-eye"></i></span>   
+                                              
+                                            </div> -->
+<!-- 
+                                            <div class="col-12 form-group">
+                                                <label >Re-enter Password:</label>
+                                                <input type="password" id="repassword" name="register-repassword" onChange="onChange()" class="form-control not-dark" required />  
+
+                                            </div> -->
+                                              <div class="col-12 form-group">
+                                                      <label > Password: <input type="password" value="" id="myInput" name="register-password" onChange="onChange()"  class="form-control" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required></label>
+
+                                                       <span class="glyphicon" onclick="myFunction('myInput')"><i class="icon-line-eye"></i></span>
+                                                </div>
+                                               <div class="col-12 form-group">
+                                                      <label > Re-enter Password: <input type="password" value="" id="myInput1" name="register-repassword" onChange="onChange()" class="form-control"  required></label>
+                                                       <span class="glyphicon" onclick="myFunction('myInput1')"><i class="icon-line-eye"></i></span>
+                                                </div>
+
+                                            <div class="col-12 form-group">
+                                                <span id='message'></span>
+                                            </div>
+
+
+
+                                            <div class="col-12 form-group">
+                                            <button type="submit">submit</button>
+                                                
+                                            </div>
+                                        </div>
+                                    </form>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+            </div>
+        </section>
+
+<!-- #content end -->
+		{% endblock %}
+
+{% block js %}
+<script>
+    function ValidateAlpha(evt)
+    {
+        var keyCode = (evt.which) ? evt.which : evt.keyCode
+        if ((keyCode < 65 || keyCode > 90) && (keyCode < 97 || keyCode > 123) && keyCode != 32)
+
+        return false;
+            return true;
+    }
+    function isNumberKey(evt){
+        //var e = evt || window.event;
+        var charCode = (evt.which) ? evt.which : evt.keyCode
+        if (charCode != 46 && charCode > 31
+        && (charCode < 48 || charCode > 57))
+            return false;
+            return true;
+        }
+
+        $('#password, #repassword').on('keyup', function () {
+        if ($('#password').val() == $('#repassword').val()) {
+            $('#message').html('Matching').css('color', 'green');
+        } else
+            $('#message').html('Not Matching').css('color', 'red');
+        });
+
+   function onChange() {
+  const password = document.querySelector('input[name=register-password]');
+  const confirm = document.querySelector('input[name=register-repassword]');
+  if (confirm.value === password.value) {
+    confirm.setCustomValidity('');
+  } else {
+    confirm.setCustomValidity('Passwords do not match');
+  }
+}
+
+
+    </script>
+{% endblock %}
+
